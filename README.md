@@ -325,13 +325,109 @@ Introducimos el nombre y descripción del nuevo repositorio (también podemos in
 
 ![Crear repositorio GitHub](docs/images/github-create-repo.png)
 
-La URL de nuestro repositorio, necesaria para poder vincularlo a nuestro repositorio local, sería https://github.com/username/CodeSignal.git (o simplemente https://github.com/username/CodeSignal, sin ".git").
+La URL de nuestro repositorio, necesaria para poder vincularlo a nuestro repositorio local, sería https://github.com/username/CodeSignal.git.
+
+> En mi caso es https://github.com/fvarrui/CodeSignal.git.
 
 ### Crear el repositorio local
 
+Ahora, desde un terminal, nos ubicamos dentro de nuestro proyecto, y ejecutamos el siguiente comando para crear el repositorio local de Git:
+
+```bash
+git init
+```
+
+### El fichero .gitignore
+
+Hay ficheros o directorios de nuestro proyecto que no queremos publicar en GitHub. Un ejemplo son los ficheros `.class`. 
+
+Como ya comentamos antes, Maven almacena los ficheros compilados en el directorio `target`, por lo que no nos interesa publicar este directorio. Podemos indicar mediante un fichero `.gitignore` en la raíz del proyecto, los ficheros y directorios que queremos que Git ignore.
+
+Pues bien, como queremos que Git ignore el directorio `target`, creamos el `.gitignore` con el siguiente contenido:
+
+```
+target
+```
+
+> Podemos añadir una línea a este fichero por cada fichero o directorio que queramos ignorar.
+
 ### Perpetrar los cambios (commit)
+
+Para publicar los cambios primero hay que perpetuarlos en el repositorio, y para eso debemos ejecutar los siguientes comandos:
+
+```bash
+git add .
+git commit -m "Primer commit"
+```
+
+El primer comando indica qué ficheros van a formar parte "commit". Esto son, ficheros nuevos o ficheros modificados. Si indicamos `.` en lugar del nombre del fichero o un directorio, se añadirán todos los cambios como parte del commit.
+
+El segundo comando es el que perpetúa (commit) los ficheros en el repositorio. Es obligatorio poner un mensaje al hacer el commit, describiendo brevemente los cambios que se están "commiteando" en el respositorio.
 
 ### Vincular el repositorio local con el remoto de GitHub
 
+Para poder publicar los cambios en un repositorio remoto, algo que normalmente hacemos para compartir el código con otros o porque estamos trabajando en equipo, desde un terminal ejecutamos los siguientes comandos para vincular nuestro repo local con el remoto:
+
+```bash
+git branch -M main
+git remote add origin https://github.com/username/CodeSignal.git
+```
+
+> El primero de los comandos es para renombrar el "branch" principal de "master" a "main", que es como se deben denominar ahora por defecto en GitHub). Si utilizamos otra plataforma distinta a GitHub, es posible que este paso no sea necesario.
+
+Esto sólo habría que hacerlo la primera vez. Una vez hemos vinculado el repositorio local a uno remoto, no es necesario repetir el proceso.
+
 ### Publicar los cambios en GitHub (push)
 
+Finalmente, enviamos nuestros "commits" locales al repositorio remoto haciendo "push": 
+
+```bash
+git push -u origin main
+```
+
+> Los siguientes "push" de este repositorio se pueden hacer simplemente con `git push`.
+
+### Traer los cambios desde GitHub (pull)
+
+En caso de que algo hubiese cambiado en el repositorio remoto, antes de hacer un "push", debemos traernos los cambios y fusionarlos (merge) con lo que tenemos en local. Para eso, desde un terminal, ejecutamos el siguiente comando:
+
+```bash
+git pull
+```
+
+Esto suele ser necesario cuando estamos trabajando en equipo, y otros desarrolladores han subido (push) cambios al repositorio remoto.
+
+## Crear el fichero README
+
+Suele ser habitual colocar un fichero `README.md` en la raíz de un repositorio Git. Este fichero tiene extensión ".md", que significa que su contenido es texto en formato **Markdown**.
+
+Este fichero contiene un descripción del proyecto, así como otra información neceria para usuarios u otros desarrolladores.
+
+Por lo tanto, creamos el fichero `README.md` en la raíz del proyecto con el siguiente contenido:
+
+```markdown
+# CodeSignal
+
+Ejercicios resueltos en Java de la plataforma [CodeSignal](https://codesignal.com).
+```
+
+Hacemos commit del nuevo fichero mediante los siguientes comandos:
+
+```bash
+git add README.md
+git commit -m "añadimos readme al proyecto"
+```
+
+Por último, hacemos "push" de los cambios:
+
+```bash
+git push
+```
+
+Y ya habremos sincronizado el nuevo fichero en el repositorio remoto y estará accesible en nuestro espacio web de GitHub.
+
+![README en GitHub](docs/images/github-readme.png)
+
+# Conclusiones
+
+En esta guía hemos visto como crear un proyecto Java con la "building tool" Maven y hemos publicado dicho proyecto en GitHub.
