@@ -319,11 +319,11 @@ GIT utiliza dos repositorios, uno local (en nuestro PC) y otro remoto (alojado e
 
 Para crear el repositorio remoto accedemos a nuestro espacio de [GitHub](https://github.com) desde un navegador (https://github.com/username), y desde la pestaña **Repositories** pulsamos el botón **New**:
 
-![image-20210919181911539](image-20210919181911539.png)
+![Nuevo repositorio GitHub](docs/images/github-new-repo.png)
 
 Introducimos el nombre y descripción del nuevo repositorio (también podemos indicar si queremos que sea público o privado), y pulsamos el botón **Create repository**:
 
-![image-20210919182339014](image-20210919182339014.png)
+![Crear repositorio GitHub](docs/images/github-create-repo.png)
 
 La URL de nuestro repositorio, necesaria para poder vincularlo a nuestro repositorio local, sería https://github.com/username/CodeSignal.git (o simplemente https://github.com/username/CodeSignal, sin ".git").
 
