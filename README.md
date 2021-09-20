@@ -1,6 +1,6 @@
 # CodeSignal
 
-Ejercicios resueltos en Java de la plataforma CodeSignal.
+Ejercicios resueltos en Java de la plataforma [CodeSignal](https://app.codesignal.com/profile/fvarrui).
 
 ## Crear el proyecto con Maven
 
